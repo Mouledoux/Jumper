@@ -17,6 +17,12 @@ public class LinearMovement : MonoBehaviour
     private Vector2 m_Direction;
 
     /// <summary>
+    /// Value to modify the global sped by if desired
+    /// </summary>
+    [SerializeField]
+    private float m_SpeedMod = 1;
+
+    /// <summary>
     /// Getter and Setter for the direction
     /// </summary>
     public Vector2 direction
@@ -38,7 +44,7 @@ public class LinearMovement : MonoBehaviour
     /// <returns></returns>
     private int MoveAtGloablSpeed()
     {
-        transform.position += (Vector3)(direction * Speed.globalSpeed);
+        transform.position += (Vector3)(direction * Speed.globalSpeed * m_SpeedMod);
         return 0;
     }
 }

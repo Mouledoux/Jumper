@@ -16,6 +16,12 @@ public class CircularMovement : MonoBehaviour
     [SerializeField]
     private bool CCW;
 
+    /// <summary>
+    /// Value to modify the global sped by if desired
+    /// </summary>
+    [SerializeField]
+    private float m_SpeedMod = 1;
+
     void Update()
     {
         RotateAtGlobalSpeed();
@@ -27,7 +33,7 @@ public class CircularMovement : MonoBehaviour
     /// <returns></returns>
     private int RotateAtGlobalSpeed()
     {
-        transform.Rotate(transform.forward, (Speed.globalSpeed * 90) * (CCW ? 1 : -1));
+        transform.Rotate(transform.forward, (Speed.globalSpeed * m_SpeedMod) * (CCW ? 1 : -1));
         return 0;
     }
 }
