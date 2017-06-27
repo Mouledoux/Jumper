@@ -4,29 +4,17 @@
  ********************************************** //
  *////////////////////////////////////////////////
 
- /* Description: This script outlines what a coin entity is.
-  */
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Component for a "coin" entity
+/// </summary>
 public class Coin : MonoBehaviour {
-
-    /// <summary>
-    /// Stores different possible colors of coins
-    /// </summary>
-    private enum e_Color
-    {
-        Red,
-        Blue,
-        Yellow
-    }
 
     /// <summary>
     /// The color of the coin
     /// </summary>
-    private e_Color m_Color;
+    private Color m_Color;
 
     /// <summary>
     /// The value of the coin
@@ -44,9 +32,43 @@ public class Coin : MonoBehaviour {
         //Initialize Speed
     }
 
-    public Coin(uint a_Value)
+    private void Update()
     {
-        if (a_Value > 0)
-        m_Value = a_Value;
+        
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Coin"/> class with passed value.
+    /// </summary>
+    /// <param name="a_Value">a value.</param>
+    public Coin(uint a_Value, Color color)
+    {
+        //Make sure the value passed is greater than 0
+        if (a_Value > 0)
+            m_Value = a_Value;
+        else
+            m_Value = 1;
+
+        //Set the color
+        m_Color = color;
+        setColor();
+    }
+
+    /// <summary>
+    /// Sets the color of the coin.
+    /// </summary>
+    private void setColor()
+    {
+        GetComponent<SpriteRenderer>().color = m_Color;
+    }
+
+    /// <summary>
+    /// Picks up the coin.
+    /// </summary>
+    private void pickUp()
+    {
+        Destroy(this.gameObject);
+    }
+
+    
 }
