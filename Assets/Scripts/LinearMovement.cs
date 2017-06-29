@@ -44,7 +44,8 @@ public class LinearMovement : MonoBehaviour
     /// <returns></returns>
     private int MoveAtGloablSpeed()
     {
-        transform.position += (Vector3)(direction * Speed.globalSpeed * m_SpeedMod);
+        if(transform.parent == null)
+            transform.position += (Vector3)(direction * Speed.globalSpeed * m_SpeedMod);
         return 0;
     }
 }
