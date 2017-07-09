@@ -10,5 +10,6 @@ public class TimeSlider : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
         Speed.globalSpeed = speed;
+        speed += Time.deltaTime * .1f;
 	}
 }
